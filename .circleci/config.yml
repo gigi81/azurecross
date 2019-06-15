@@ -11,22 +11,23 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
-         name: base build
+         name: base image build
          working_directory: base
-         command: |
-           docker build -t gigi81/azurecross:base .
-           docker save -o base.tar gigi81/azurecross:base
+         command: docker build -t gigi81/azurecross:base
       - run:
-         name: aarch64-linux-gnu build
+         name: aarch64-linux-gnu image build
          working_directory: aarch64-linux-gnu
+         command: docker build -t gigi81/azurecross:aarch64-linux-gnu .
+      - run:
+         name: save images
          command: |
-           docker build -t gigi81/azurecross:aarch64-linux-gnu .
-           docker save -o aarch64-linux-gnu.tar gigi81/azurecross:aarch64-linux-gnu
+           docker save -o ./aarch64-linux-gnu.tar gigi81/azurecross:aarch64-linux-gnu
+           docker save -o ./base.tar gigi81/azurecross:base
       - persist_to_workspace:
          root: .
          paths:
-            - ./base.tar
-            - ./aarch64-linux-gnu.tar
+            - base.tar
+            - aarch64-linux-gnu.tar
   publish:
     executor: docker-executor
     steps:
