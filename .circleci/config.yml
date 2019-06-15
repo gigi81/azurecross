@@ -1,7 +1,8 @@
 version: 2
 jobs:
   build:
-    machine: true
+    docker:
+      - image: circleci/buildpack-deps:stretch
     steps:
       - checkout
       - run:
@@ -15,7 +16,8 @@ jobs:
          command: |
            docker build -t gigi81/azurecross:aarch64-linux-gnu .
   publish:
-    machine: true
+    docker:
+      - image: circleci/buildpack-deps:stretch
     steps:
       - setup_remote_docker
       - run:
