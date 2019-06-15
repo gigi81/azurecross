@@ -1,0 +1,20 @@
+build-settings: &build-settings
+  machine: true
+  working_directory: ~/azurecross
+
+version: 2
+jobs:
+  build:
+    <<: *build-settings
+    steps:
+      - checkout
+      - run:
+         name: base build
+         working_directory: base
+         command: |
+           docker build -t azurecross/base .
+      - run:
+         name: aarch64-linux-gnu build
+         working_directory: aarch64-linux-gnu
+         command: |
+           docker build -t azurecross/aarch64-linux-gnu .
