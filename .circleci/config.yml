@@ -1,8 +1,8 @@
 version: 2.1
-  executors:
-    docker-executor:
-      docker:
-        - image: circleci/buildpack-deps:stretch
+executors:
+  docker-executor:
+    docker:
+      - image: circleci/buildpack-deps:stretch
 
 jobs:
   build:
