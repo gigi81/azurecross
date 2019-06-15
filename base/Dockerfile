@@ -15,6 +15,7 @@ build-essential \
 bc \
 bzip2 \
 ca-certificates \
+cmake \
 curl \
 dirmngr \
 file \
