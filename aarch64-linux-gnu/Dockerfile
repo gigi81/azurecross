@@ -1,4 +1,4 @@
-FROM azurecross/base
+FROM gigi81/azurecross:base
 MAINTAINER Luigi Grilli "luigi.grilli@gmail.com"
 
 ENV TC_VERSION=8.3-2019.03
