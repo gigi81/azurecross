@@ -13,7 +13,7 @@ jobs:
       - run:
          name: base image build
          working_directory: base
-         command: docker build -t gigi81/azurecross:base
+         command: docker build -t gigi81/azurecross:base .
       - run:
          name: aarch64-linux-gnu image build
          working_directory: aarch64-linux-gnu
@@ -21,8 +21,8 @@ jobs:
       - run:
          name: save images
          command: |
-           docker save -o ./aarch64-linux-gnu.tar gigi81/azurecross:aarch64-linux-gnu
-           docker save -o ./base.tar gigi81/azurecross:base
+           docker save -o base.tar gigi81/azurecross:base
+           docker save -o aarch64-linux-gnu.tar gigi81/azurecross:aarch64-linux-gnu
       - persist_to_workspace:
          root: .
          paths:
