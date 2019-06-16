@@ -1,7 +1,7 @@
+ARG TC_VERSION
 FROM gigi81/azurecross:base
 MAINTAINER Luigi Grilli "luigi.grilli@gmail.com"
 
-ENV TC_VERSION=8.3-2019.03
 ENV TC_PROCESSOR arm
 ENV TC_TRIPLE arm-linux-gnueabi
 ENV TC_ROOT=/toolchain

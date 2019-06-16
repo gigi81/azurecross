@@ -3,6 +3,9 @@ executors:
   docker-executor:
     docker:
       - image: circleci/buildpack-deps:stretch
+    environment:
+      #https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-a/downloads
+      TC_VERSION: 8.3-2019.03
 
 jobs:
   build:
@@ -15,19 +18,31 @@ jobs:
          working_directory: base
          command: docker build -t gigi81/azurecross:base .
       - run:
+         name: arm-linux-gnueabi image build
+         working_directory: arm-linux-gnueabi
+         command: docker build -t gigi81/azurecross:arm-linux-gnueabi --build-arg TC_VERSION={{.TC_VERSION}} .
+      - run:
+         name: arm-linux-gnueabihf image build
+         working_directory: arm-linux-gnueabihf
+         command: docker build -t gigi81/azurecross:arm-linux-gnueabihf --build-arg TC_VERSION={{.TC_VERSION}} .
+      - run:
          name: aarch64-linux-gnu image build
          working_directory: aarch64-linux-gnu
-         command: docker build -t gigi81/azurecross:aarch64-linux-gnu .
+         command: docker build -t gigi81/azurecross:aarch64-linux-gnu --build-arg TC_VERSION={{.TC_VERSION}} .
       - run:
          name: save images
          command: |
            docker save -o base.tar gigi81/azurecross:base
            docker save -o aarch64-linux-gnu.tar gigi81/azurecross:aarch64-linux-gnu
+           docker save -o arm-linux-gnueabi.tar gigi81/azurecross:arm-linux-gnueabi
+           docker save -o arm-linux-gnueabihf.tar gigi81/azurecross:arm-linux-gnueabihf
       - persist_to_workspace:
          root: .
          paths:
             - base.tar
             - aarch64-linux-gnu.tar
+            - arm-linux-gnueabi.tar
+            - arm-linux-gnueabihf.tar
   publish:
     executor: docker-executor
     steps:
@@ -39,12 +54,23 @@ jobs:
           command: |
             docker load -i /tmp/workspace/base.tar
             docker load -i /tmp/workspace/aarch64-linux-gnu.tar
+            docker load -i arm-linux-gnueabi.tar
+            docker load -i arm-linux-gnueabihf.tar
+      - run:
+          name: Tag Docker images
+          command: |
+            docker tag gigi81/azurecross:base gigi81/azurecross:base-{{.TC_VERSION}}
+            docker tag gigi81/azurecross:aarch64-linux-gnu gigi81/azurecross:aarch64-linux-gnu-{{.TC_VERSION}}
+            docker tag gigi81/azurecross:arm-linux-gnueabi gigi81/azurecross:arm-linux-gnueabi-{{.TC_VERSION}}
+            docker tag gigi81/azurecross:arm-linux-gnueabihf gigi81/azurecross:arm-linux-gnueabihf-{{.TC_VERSION}}
       - run:
           name: Publish Docker Images to Docker Hub
           command: |
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
             docker push gigi81/azurecross:base
             docker push gigi81/azurecross:aarch64-linux-gnu
+            docker push gigi81/azurecross:arm-linux-gnueabi
+            docker push gigi81/azurecross:arm-linux-gnueabihf
 
 workflows:
   version: 2
