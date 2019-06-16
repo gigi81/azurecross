@@ -63,8 +63,8 @@ jobs:
           command: |
             docker load -i /tmp/workspace/base.tar
             docker load -i /tmp/workspace/aarch64-linux-gnu.tar
-            docker load -i arm-linux-gnueabi.tar
-            docker load -i arm-linux-gnueabihf.tar
+            docker load -i /tmp/workspace/arm-linux-gnueabi.tar
+            docker load -i /tmp/workspace/arm-linux-gnueabihf.tar
       - run:
           name: Tag Docker images
           command: |
@@ -80,6 +80,10 @@ jobs:
             docker push gigi81/azurecross:aarch64-linux-gnu
             docker push gigi81/azurecross:arm-linux-gnueabi
             docker push gigi81/azurecross:arm-linux-gnueabihf
+            docker push gigi81/azurecross:base-$TC_VERSION
+            docker push gigi81/azurecross:aarch64-linux-gnu-$TC_VERSION
+            docker push gigi81/azurecross:arm-linux-gnueabi-$TC_VERSION
+            docker push gigi81/azurecross:arm-linux-gnueabihf-$TC_VERSION
 
 workflows:
   version: 2
