@@ -21,6 +21,6 @@ ENV QEMU_SET_ENV "LD_LIBRARY_PATH=${TC_ROOT}/lib:${QEMU_LD_PREFIX}"
 
 WORKDIR /azp
 
-RUN ./toolchain.sh
+RUN export && ./toolchain.sh
 
 CMD ["./start.sh"]

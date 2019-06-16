@@ -23,6 +23,6 @@ ENV PKG_CONFIG_PATH /usr/lib/${TC_TRIPLE}/pkgconfig
 
 WORKDIR /azp
 
-RUN ./toolchain.sh
+RUN export && ./toolchain.sh
 
 CMD ["./start.sh"]
