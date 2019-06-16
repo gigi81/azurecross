@@ -68,7 +68,7 @@ jobs:
       - run:
           name: Tag Docker images
           command: |
-            docker tag gigi81/azurecross:base gigi81/azurecross:base-{{.TC_VERSION}}
+            docker tag gigi81/azurecross:base gigi81/azurecross:base-$TC_VERSION
             docker tag gigi81/azurecross:aarch64-linux-gnu gigi81/azurecross:aarch64-linux-gnu-$TC_VERSION
             docker tag gigi81/azurecross:arm-linux-gnueabi gigi81/azurecross:arm-linux-gnueabi-$TC_VERSION
             docker tag gigi81/azurecross:arm-linux-gnueabihf gigi81/azurecross:arm-linux-gnueabihf-$TC_VERSION
