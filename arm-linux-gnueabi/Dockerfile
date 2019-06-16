@@ -1,6 +1,7 @@
-ARG ARGVERSION
 FROM gigi81/azurecross:base
 MAINTAINER Luigi Grilli "luigi.grilli@gmail.com"
+
+ARG ARGVERSION
 
 ENV TC_VERSION=$ARGVERSION
 ENV TC_PROCESSOR arm
