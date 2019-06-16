@@ -24,4 +24,4 @@ tar -xJf $SYS_FILE -C $TC_ROOT/sysroot
 rm $TC_FILE
 rm $TC_FILE.asc
 rm $SYS_FILE
-rm $SYS_FILE.asc
+#rm $SYS_FILE.asc
