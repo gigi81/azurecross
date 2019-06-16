@@ -28,15 +28,15 @@ jobs:
       - run:
          name: arm-linux-gnueabi image build
          working_directory: arm-linux-gnueabi
-         command: docker build -t gigi81/azurecross:arm-linux-gnueabi --build-arg TC_VERSION=$TC_VERSION .
+         command: docker build -t gigi81/azurecross:arm-linux-gnueabi --build-arg ARGVERSION=$TC_VERSION .
       - run:
          name: arm-linux-gnueabihf image build
          working_directory: arm-linux-gnueabihf
-         command: docker build -t gigi81/azurecross:arm-linux-gnueabihf --build-arg TC_VERSION=$TC_VERSION .
+         command: docker build -t gigi81/azurecross:arm-linux-gnueabihf --build-arg ARGVERSION=$TC_VERSION .
       - run:
          name: aarch64-linux-gnu image build
          working_directory: aarch64-linux-gnu
-         command: docker build -t gigi81/azurecross:aarch64-linux-gnu --build-arg TC_VERSION=$TC_VERSION .
+         command: docker build -t gigi81/azurecross:aarch64-linux-gnu --build-arg ARGVERSION=$TC_VERSION .
       - run:
          name: save images
          command: |
