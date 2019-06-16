@@ -14,16 +14,21 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
+         command: |
+          if [ -z "$TC_VERSION" ]
+          then
+              exit 1
+          else
+              echo "Building version $TC_VERSION"
+          fi
+      - run:
          name: base image build
          working_directory: base
          command: docker build -t gigi81/azurecross:base .
       - run:
          name: arm-linux-gnueabi image build
          working_directory: arm-linux-gnueabi
-         command: |
-          echo $TC_VERSION
-          echo {{.TC_VERSION}}
-          docker build -t gigi81/azurecross:arm-linux-gnueabi --build-arg TC_VERSION=$TC_VERSION .
+         command: docker build -t gigi81/azurecross:arm-linux-gnueabi --build-arg TC_VERSION=$TC_VERSION .
       - run:
          name: arm-linux-gnueabihf image build
          working_directory: arm-linux-gnueabihf
