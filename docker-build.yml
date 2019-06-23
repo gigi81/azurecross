@@ -6,7 +6,7 @@ steps:
   displayName: ${{ parameters.arch }} image build
   inputs:
     command: build
-    repository: azurecross
+    repository: gigi81/azurecross
     dockerfile: ${{ parameters.arch }}/Dockerfile
     buildContext: ${{ parameters.arch }}
     arguments: --build-arg ARGVERSION="$(TC_VERSION)"

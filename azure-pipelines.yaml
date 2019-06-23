@@ -35,7 +35,7 @@ steps:
   displayName: base image build
   inputs:
     command: build
-    repository: azurecross
+    repository: gigi81/azurecross
     dockerfile: base/Dockerfile
     buildContext: base
     tags: |
@@ -58,7 +58,7 @@ steps:
   displayName: Publish Docker Images to Docker Hub
   inputs:
     command: push
-    repository: azurecross
+    repository: gigi81/azurecross
     tags: |
       base
       base-$(TC_VERSION)
