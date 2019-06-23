@@ -37,6 +37,6 @@ steps:
     command: build
     repository: azurecross
     buildContext: base
-    tags:
-      - base
-      - base-$(TC_VERSION)
+    tags: |
+      base
+      base-$(TC_VERSION)
