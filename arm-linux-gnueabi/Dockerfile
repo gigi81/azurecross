@@ -1,4 +1,4 @@
-FROM gigi81/azurecross:base
+FROM azurecross:base
 MAINTAINER Luigi Grilli "luigi.grilli@gmail.com"
 
 ARG ARGVERSION
