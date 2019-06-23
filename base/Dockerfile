@@ -51,17 +51,18 @@ git \
 iputils-ping \
 libcurl3 \
 libicu55 \
-qemu-user \
-qemu-user-static \
-binfmt-support \
+libglib2.0-dev \
 && apt-get clean --yes
 
 WORKDIR /azp
 
 COPY \
 start.sh \
+qemu.sh \
 toolchain.sh \
 toolchain.cmake \
 /azp/
 
-RUN chmod +x start.sh toolchain.sh
+ENV QEMU_EXECVE 1
+
+RUN chmod +x start.sh toolchain.sh qemu.sh && ./qemu.sh
