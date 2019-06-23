@@ -53,6 +53,7 @@ libcurl3 \
 libicu55 \
 qemu-user \
 qemu-user-static \
+binfmt-support \
 && apt-get clean --yes
 
 WORKDIR /azp
@@ -63,4 +64,5 @@ toolchain.sh \
 toolchain.cmake \
 /azp/
 
-RUN chmod +x start.sh toolchain.sh
+RUN wget https://raw.githubusercontent.com/qemu/qemu/master/scripts/qemu-binfmt-conf.sh
+RUN chmod +x start.sh toolchain.sh qemu-binfmt-conf.sh
