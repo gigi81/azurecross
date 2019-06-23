@@ -53,3 +53,18 @@ steps:
 - template: docker-build.yml
   parameters:
     arch: 'aarch64-linux-gnu'
+
+- task: Docker@2
+  displayName: Publish Docker Images to Docker Hub
+  inputs:
+    command: push
+    repository: azurecross
+    tags: |
+      base
+      base-$(TC_VERSION)
+      arm-linux-gnueabi
+      arm-linux-gnueabi-$(TC_VERSION)
+      arm-linux-gnueabihf
+      arm-linux-gnueabihf-$(TC_VERSION)
+      aarch64-linux-gnu
+      aarch64-linux-gnu-$(TC_VERSION)
