@@ -52,6 +52,7 @@ iputils-ping \
 libcurl3 \
 libicu55 \
 libglib2.0-dev \
+libpixman-1-dev \
 && apt-get clean --yes
 
 WORKDIR /azp
@@ -65,4 +66,5 @@ toolchain.cmake \
 
 ENV QEMU_EXECVE 1
 
-RUN chmod +x start.sh toolchain.sh qemu.sh && ./qemu.sh
+RUN chmod +x start.sh toolchain.sh qemu.sh && \
+./qemu.sh
