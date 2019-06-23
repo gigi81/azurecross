@@ -51,8 +51,10 @@ git \
 iputils-ping \
 libcurl3 \
 libicu55 \
+libfdt-dev \
 libglib2.0-dev \
 libpixman-1-dev \
+zlib1g-dev \
 && apt-get clean --yes
 
 WORKDIR /azp

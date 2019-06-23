@@ -3,6 +3,9 @@ git clone https://github.com/balena-io/qemu
 cd qemu
 mkdir build
 cd build
-../configure
-make
+../configure --target-list=armeb-linux-user,aarch64-linux-user,arm-softmmu,aarch64-softmmu --prefix-/usr
+
+make -j8
 make install
+cd ../..
+rm -rf qemu
