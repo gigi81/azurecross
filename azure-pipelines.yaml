@@ -36,6 +36,7 @@ steps:
   inputs:
     command: build
     repository: azurecross
+    dockerfile: base/Dockerfile
     buildContext: base
     tags: |
       base
