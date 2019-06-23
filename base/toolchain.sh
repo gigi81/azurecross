@@ -1,4 +1,6 @@
 #!/bin/bash
+# exit when any command fails
+set -e
 
 export TC_FILE=gcc-arm-$TC_VERSION-x86_64-$TC_TRIPLE.tar.xz
 export SYS_FILE=sysroot-glibc-$TC_VERSION-x86_64-$TC_TRIPLE.tar.xz

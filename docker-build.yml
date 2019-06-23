@@ -1,0 +1,15 @@
+parameters:
+  arch: ''
+
+steps:
+- task: Docker@2
+  displayName: {{ parameters.arch }} image build
+  inputs:
+    command: build
+    repository: azurecross
+    dockerfile: {{ parameters.arch }}/Dockerfile
+    buildContext: {{ parameters.arch }}
+    arguments: --build-arg ARGVERSION="$(TC_VERSION)"
+    tags: |
+      {{ parameters.arch }}
+      {{ parameters.arch }}-$(TC_VERSION)

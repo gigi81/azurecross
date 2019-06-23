@@ -1,4 +1,7 @@
 #!/bin/bash
+# exit when any command fails
+set -e
+
 git clone https://github.com/balena-io/qemu
 cd qemu
 mkdir build

@@ -41,3 +41,15 @@ steps:
     tags: |
       base
       base-$(TC_VERSION)
+
+- template: docker-build.yml
+  parameters:
+    arch: 'arm-linux-gnueabi'
+
+- template: docker-build.yml
+  parameters:
+    arch: 'arm-linux-gnueabihf'
+
+- template: docker-build.yml
+  parameters:
+    arch: 'aarch64-linux-gnu'
