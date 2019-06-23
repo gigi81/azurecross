@@ -53,7 +53,6 @@ libcurl3 \
 libicu55 \
 qemu-user \
 qemu-user-static \
-binfmt-support \
 && apt-get clean --yes
 
 WORKDIR /azp
