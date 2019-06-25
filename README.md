@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/gigi81/azurecross.svg?style=svg)](https://circleci.com/gh/gigi81/azurecross)
+[![Build Status](https://luigigrilli.visualstudio.com/azurecross/_apis/build/status/gigi81.azurecross?branchName=master)](https://luigigrilli.visualstudio.com/azurecross/_build/latest?definitionId=6&branchName=master)
 
 # azurecross
 
