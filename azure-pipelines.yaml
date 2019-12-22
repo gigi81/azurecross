@@ -3,7 +3,7 @@ pool:
 
 variables:
   #https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-a/downloads
-  TC_VERSION: 8.3-2019.03
+  TC_VERSION: 9.2-2019.12
 
 resources:
 - repo: self
