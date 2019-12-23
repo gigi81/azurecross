@@ -5,7 +5,7 @@ ARG ARGVERSION
 
 ENV TC_VERSION=$ARGVERSION
 ENV TC_PROCESSOR arm
-ENV TC_TRIPLE arm-linux-none-gnueabihf
+ENV TC_TRIPLE arm-none-linux-gnueabihf
 ENV TC_ROOT=/toolchain
 ENV CMAKE_TOOLCHAIN_FILE=/azp/toolchain.cmake
 
