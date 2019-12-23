@@ -44,15 +44,15 @@ steps:
 
 - template: docker-build.yml
   parameters:
-    arch: 'arm-linux-gnueabi'
+    arch: 'arm-none-eabi'
 
 - template: docker-build.yml
   parameters:
-    arch: 'arm-linux-gnueabihf'
+    arch: 'arm-linux-none-gnueabihf'
 
 - template: docker-build.yml
   parameters:
-    arch: 'aarch64-linux-gnu'
+    arch: 'aarch64-none-linux-gnu'
 
 - task: Docker@2
   displayName: Publish Docker Images to Docker Hub
@@ -62,9 +62,9 @@ steps:
     tags: |
       base
       base-$(TC_VERSION)
-      arm-linux-gnueabi
-      arm-linux-gnueabi-$(TC_VERSION)
-      arm-linux-gnueabihf
-      arm-linux-gnueabihf-$(TC_VERSION)
-      aarch64-linux-gnu
-      aarch64-linux-gnu-$(TC_VERSION)
+      arm-none-eabi
+      arm-none-eabi-$(TC_VERSION)
+      arm-linux-none-gnueabihf
+      arm-linux-none-gnueabihf-$(TC_VERSION)
+      aarch64-none-linux-gnu
+      aarch64-none-linux-gnu-$(TC_VERSION)
