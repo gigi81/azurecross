@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:22.04
 MAINTAINER Luigi Grilli "luigi.grilli@gmail.com"
 
 # To make it easier for build and release pipelines to run apt-get,
