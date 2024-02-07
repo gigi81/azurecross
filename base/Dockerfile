@@ -27,9 +27,9 @@ make \
 ncurses-dev \
 pkg-config \
 libtool \
-python \
-python-dev \
-python-pip \
+python3 \
+python3-dev \
+python3-pip \
 rsync \
 sed \
 ssh \
@@ -49,8 +49,6 @@ libncurses5-dev \
 jq \
 git \
 iputils-ping \
-libcurl3 \
-libicu55 \
 libfdt-dev \
 libglib2.0-dev \
 libpixman-1-dev \
